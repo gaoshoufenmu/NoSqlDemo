@@ -1,0 +1,12 @@
+﻿redis-conn-str 192.168.1.1:6379,password=xxxx
+
+# redis数据库编号
+rev-idx-no 1
+ent-inv-no 4
+ent-mb-no 3
+ent-sh-no 2
+court-no 6
+person-no 5
+name-area-no 7
+
+  

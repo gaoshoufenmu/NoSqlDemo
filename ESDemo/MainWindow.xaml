@@ -1,0 +1,144 @@
+﻿<Controls:MetroWindow x:Class="QZ.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QZ.Demo"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:uc="clr-namespace:Microsoft.Windows.Controls;assembly=QZ.UserControl"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"              
+        EnableDWMDropShadow="True" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="Fuck Test" Height="980" Width="1300" FontSize="14">
+    <Window.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}"></Binding>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <DataTemplate x:Key="CompanyItem">
+            <StackPanel Margin="1,3">
+                <uc:RichTextBox x:Name="CName" BorderThickness="0" Background="Transparent" Text="{Binding Name}" FontSize="18" HorizontalAlignment="Left"
+                                Width="800" Height="30" AcceptsReturn="False" IsReadOnly="True" Margin="2">
+                </uc:RichTextBox>
+                <StackPanel Orientation="Horizontal">
+                    <uc:RichTextBox x:Name="Address" Text="{Binding Addr}" AcceptsReturn="False" IsReadOnly="True" Width="400" BorderThickness="0" Background="Transparent" Margin="2" HorizontalAlignment="Left"></uc:RichTextBox>
+                    <uc:RichTextBox x:Name="Bussiness" Text="{Binding Bussiness}" AcceptsReturn="False" IsReadOnly="True" Width="400" BorderThickness="0" Background="Transparent" Margin="2" HorizontalAlignment="Left"></uc:RichTextBox>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <uc:RichTextBox x:Name="LP" Text="{Binding LawPerson}" Margin="5,2,10,2" AcceptsReturn="False" IsReadOnly="True" Width="200" BorderThickness="0" Background="Transparent"></uc:RichTextBox>
+                    <!--<TextBlock x:Name="LawPerson" Text="{Binding LawPerson}" Margin="5,0,10,0"></TextBlock>-->
+                    <TextBlock x:Name="Tels" Text="{Binding Tel}" Margin="10,2,10,2"></TextBlock>
+                    <uc:RichTextBox Text="{Binding Brand}" AcceptsReturn="False" IsReadOnly="True" Width="200" BorderThickness="0" Background="Transparent" Margin="2"></uc:RichTextBox>
+                    <TextBlock Text="{Binding Status}" Margin="10,2"></TextBlock>
+                    <TextBlock Text="{Binding Weight}" Margin="10, 2,10,2"></TextBlock>
+                    <TextBlock Text="{Binding Score}" Margin="10, 2,10,2"></TextBlock>
+                    <TextBlock Text="{Binding Code}" Margin="10, 2,10,2"></TextBlock>
+                    <TextBlock Text="{Binding RegDate}" Margin="10, 2,10,2"></TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBox Controls:TextBoxHelper.Watermark="Input Your Fucking Requirement: " Controls:TextBoxHelper.ClearTextButton="True" Margin="10,1" Width="600" Text="{Binding Input, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <!--<i:Interaction.Triggers>
+                    <i:EventTrigger EventName="KeyDown">
+                        <i:InvokeCommandAction Command="{Binding FuckCommand}" CommandParameter=""></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>-->
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding FuckCommand}"></KeyBinding>
+                </TextBox.InputBindings>
+                
+            </TextBox>
+            <ComboBox Width="150" Margin="1" SelectedIndex="{Binding GeneralIndex}" Visibility="{Binding GeneralVisibility}">
+                <ComboBoxItem Content="General Fuck"></ComboBoxItem>
+                <ComboBoxItem Content="Prefix Fuck"></ComboBoxItem>
+                <ComboBoxItem Content="Contain Fuck"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Width="150" Margin="1" SelectedIndex="{Binding SpecialIndex}" Visibility="{Binding SpecialVisibility}">
+                <ComboBoxItem Content="Fuck Name"></ComboBoxItem>
+                <ComboBoxItem Content="Fuck LawPerson"></ComboBoxItem>
+                <ComboBoxItem Content="Fuck Address"></ComboBoxItem>
+                <ComboBoxItem Content="Fuck Business"></ComboBoxItem>
+            </ComboBox>
+            <Button Content="FUCK" Width="100" Margin="1" BorderThickness="0" Command="{Binding FuckCommand}" Style="{StaticResource AccentedSquareButtonStyle}">
+            </Button>
+            <StackPanel Width="60" Margin="50, 1,20,1">
+                <Canvas>
+                    <Path Fill="DeepSkyBlue" IsEnabled="{Binding PrevButtonEnabled}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:InvokeCommandAction  Command="{Binding FuckPrevCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="-8,-10">
+                                    <PolyLineSegment Points="0,0 0,32 -16,16 0,0">
+
+                                    </PolyLineSegment>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                    <Path Fill="DeepSkyBlue" Margin="20, 1"  IsEnabled="{Binding NextButtonEnabled}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDown">
+                                <i:InvokeCommandAction  Command="{Binding FuckNextCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Path.Data>
+                            <PathGeometry>
+                                <PathFigure StartPoint="-8,-10">
+                                    <PolyLineSegment Points="0,0 0,32 16,16 0,0">
+
+                                    </PolyLineSegment>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+                </Canvas>
+            </StackPanel>
+            <Button Content="Switch" Margin="2" BorderThickness="0" Command="{Binding SwitchCommand}" Style="{StaticResource AccentedSquareButtonStyle}" Width="80"
+                    ToolTipService.ToolTip="Switch to another fucking pose...">
+                
+            </Button>
+            <Label Content="{Binding Total, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Label>
+            <!--<uc:RichTextBlock Text="{Binding SpecialText}" Width="100" ></uc:RichTextBlock>-->
+            <!--   TextFormatter="{StaticResource HtmlFormatter}"--> 
+        </StackPanel>
+        <ListView  ItemsSource="{Binding Companies, Mode=TwoWay}" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn CellTemplate="{StaticResource CompanyItem}"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--<TextBlock Grid.Row="1" Text="{Binding NoneVisibility}" Foreground="Violet" FontSize="30" FontWeight="Bold" TextAlignment="Justify" Margin="50,100"></TextBlock>-->
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button  Content="Fuck Prev" Width="200" Margin="100,4,150,4" BorderThickness="0" Command="{Binding FuckPrevCommand}" IsEnabled="{Binding PrevButtonEnabled}" 
+                     Style="{StaticResource AccentedSquareButtonStyle}"></Button>
+            <Button  Content="Fuck Next" Width="200" Margin="50,4,200,4" BorderThickness="0" Command="{Binding FuckNextCommand}" IsEnabled="{Binding NextButtonEnabled}"
+                     Style="{StaticResource AccentedSquareButtonStyle}"></Button>
+            <Label Content="Shit Page : " HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <TextBlock Text="{Binding Page}" VerticalAlignment="Center" Width="50"></TextBlock>
+            <TextBlock Text="{Binding WaitHint}" Width="60" Margin="10,1,10,1"></TextBlock>
+            <TextBox Text="{Binding PageInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="60" Margin="10,1,10,1">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding PageFuckCommand}"></KeyBinding>
+                </TextBox.InputBindings>
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</Controls:MetroWindow>
